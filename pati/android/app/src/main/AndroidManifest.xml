@@ -20,7 +20,7 @@
                  until Flutter renders its first frame. It can be removed if
                  there is no splash screen (such as the default splash screen
                  defined in @style/LaunchTheme). -->
-            <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCSw9Zp6kw66CMyrq-zWWcl47ljm1789T4"/>
+            <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR+KEY"/>
 
             <meta-data
                 android:name="io.flutter.app.android.SplashScreenUntilFirstFrame"
