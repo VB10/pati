@@ -1,0 +1,70 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/vb/Desktop/dotnetcore/dotnetcore.csproj": {}
+  },
+  "projects": {
+    "/Users/vb/Desktop/dotnetcore/dotnetcore.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/vb/Desktop/dotnetcore/dotnetcore.csproj",
+        "projectName": "dotnetcore",
+        "projectPath": "/Users/vb/Desktop/dotnetcore/dotnetcore.csproj",
+        "packagesPath": "/Users/vb/.nuget/packages/",
+        "outputPath": "/Users/vb/Desktop/dotnetcore/obj/",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "/Users/vb/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.0"
+        ],
+        "sources": {
+          "/Users/vb/.dotnet/NuGetFallbackFolder": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.0": {
+          "dependencies": {
+            "CorePush": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          }
+        }
+      }
+    }
+  }
+}
