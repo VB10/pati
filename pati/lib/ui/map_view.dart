@@ -11,36 +11,64 @@ class MapView extends StatefulWidget {
 class _MapViewState extends State<MapView> {
   Completer<GoogleMapController> _controller = Completer();
 
-  static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
+  BitmapDescriptor _markerIcon;
 
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
+  LatLng _kMapCenter = LatLng(40.875257, 29.1);
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    _createMarkerImageFromAsset(context);
+
+    return Scaffold(
       body: GoogleMap(
+        markers: _createMarker(),
         mapType: MapType.normal,
-        initialCameraPosition: _kGooglePlex,
+        initialCameraPosition: CameraPosition(target: _kMapCenter, zoom: 10),
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
+        onPressed: null,
         label: Text('To the lake!'),
         icon: Icon(Icons.directions_boat),
       ),
     );
   }
 
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+  Set<Marker> _createMarker() {
+    // TODO(iskakaushik): Remove this when collection literals makes it to stable.
+    // https://github.com/flutter/flutter/issues/28312
+    // ignore: prefer_collection_literals
+    return <Marker>[
+      Marker(
+        markerId: MarkerId("marker_1"),
+        infoWindow: InfoWindow(
+          title: "Adalar Mama Kabi",
+          snippet: "Doluluk orani %15"
+        ),
+        position: _kMapCenter,
+        icon: _markerIcon,
+        onTap: (){
+
+        },
+
+      ),
+    ].toSet();
+  }
+
+  Future<void> _createMarkerImageFromAsset(BuildContext context) async {
+    if (_markerIcon == null) {
+      final ImageConfiguration imageConfiguration =
+          createLocalImageConfiguration(context);
+      BitmapDescriptor.fromAssetImage(
+              imageConfiguration, 'assets/images/container.png')
+          .then(_updateBitmap);
+    }
+  }
+
+  void _updateBitmap(BitmapDescriptor bitmap) {
+    setState(() {
+      _markerIcon = bitmap;
+    });
   }
 }
