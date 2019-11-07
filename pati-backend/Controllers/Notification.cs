@@ -9,6 +9,7 @@ namespace pati_backend.Controllers
 	public class Notification
 	{
 		const String firebaseCloudUrl = "https://fcm.googleapis.com/fcm/send";
+		public const String firebaseUrl = "https://reacttest-d7f4d.firebaseio.com/pets/0.json";
 
 		public async Task postNotifiactionAsync(String title, String body, Object data, String[] deviceTokens)
 		{
