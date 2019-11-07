@@ -10,7 +10,7 @@
       "NETCOREAPP",
       "NETCOREAPP3_0"
     ],
-    "languageVersion": "preview",
+    "languageVersion": "",
     "platform": "",
     "allowUnsafe": false,
     "warningsAsErrors": false,
@@ -24,6 +24,7 @@
     ".NETCoreApp,Version=v3.0": {
       "dotnetcore/1.0.0": {
         "dependencies": {
+          "CorePush": "2.0.1",
           "Microsoft.AspNetCore.Antiforgery": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.0.0.0",
@@ -32,9 +33,11 @@
           "Microsoft.AspNetCore.Authentication.OAuth": "3.0.0.0",
           "Microsoft.AspNetCore.Authorization": "3.0.0.0",
           "Microsoft.AspNetCore.Authorization.Policy": "3.0.0.0",
-          "Microsoft.AspNetCore.Components.Browser": "3.0.0.0",
+          "Microsoft.AspNetCore.Components.Authorization": "3.0.0.0",
           "Microsoft.AspNetCore.Components": "3.0.0.0",
+          "Microsoft.AspNetCore.Components.Forms": "3.0.0.0",
           "Microsoft.AspNetCore.Components.Server": "3.0.0.0",
+          "Microsoft.AspNetCore.Components.Web": "3.0.0.0",
           "Microsoft.AspNetCore.Connections.Abstractions": "3.0.0.0",
           "Microsoft.AspNetCore.CookiePolicy": "3.0.0.0",
           "Microsoft.AspNetCore.Cors": "3.0.0.0",
@@ -66,7 +69,6 @@
           "Microsoft.AspNetCore.Metadata": "3.0.0.0",
           "Microsoft.AspNetCore.Mvc.Abstractions": "3.0.0.0",
           "Microsoft.AspNetCore.Mvc.ApiExplorer": "3.0.0.0",
-          "Microsoft.AspNetCore.Mvc.Components.Prerendering": "3.0.0.0",
           "Microsoft.AspNetCore.Mvc.Core": "3.0.0.0",
           "Microsoft.AspNetCore.Mvc.Cors": "3.0.0.0",
           "Microsoft.AspNetCore.Mvc.DataAnnotations": "3.0.0.0",
@@ -159,7 +161,7 @@
           "System.Collections.Immutable": "1.2.4.0",
           "System.Collections.NonGeneric": "4.1.1.0",
           "System.Collections.Specialized": "4.1.1.0",
-          "System.ComponentModel.Annotations": "4.2.0.0",
+          "System.ComponentModel.Annotations": "4.3.0.0",
           "System.ComponentModel.DataAnnotations": "4.0.0.0",
           "System.ComponentModel": "4.0.3.0",
           "System.ComponentModel.EventBasedAsync": "4.1.1.0",
@@ -259,7 +261,7 @@
           "System.Security.AccessControl": "4.1.1.0",
           "System.Security.Claims": "4.1.1.0",
           "System.Security.Cryptography.Algorithms": "4.3.1.0",
-          "System.Security.Cryptography.Cng": "4.3.2.0",
+          "System.Security.Cryptography.Cng.Reference": "4.3.2.0",
           "System.Security.Cryptography.Csp": "4.1.1.0",
           "System.Security.Cryptography.Encoding": "4.1.1.0",
           "System.Security.Cryptography.Primitives": "4.1.1.0",
@@ -294,6 +296,7 @@
           "System.Web": "4.0.0.0",
           "System.Web.HttpUtility": "4.0.1.0",
           "System.Windows": "4.0.0.0",
+          "System.Windows.Extensions": "4.0.0.0",
           "System.Xml": "4.0.0.0",
           "System.Xml.Linq": "4.0.0.0",
           "System.Xml.ReaderWriter": "4.2.1.0",
@@ -312,6 +315,53 @@
           "dotnetcore.dll": {}
         }
       },
+      "CorePush/2.0.1": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.2",
+          "System.Net.Http.WinHttpHandler": "4.6.0",
+          "System.Security.Cryptography.Cng": "4.6.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/CorePush.dll": {
+            "assemblyVersion": "2.0.1.0",
+            "fileVersion": "2.0.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/CorePush.dll": {}
+        }
+      },
+      "Newtonsoft.Json/12.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.2.23222"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "System.Net.Http.WinHttpHandler/4.6.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.Net.Http.WinHttpHandler.dll": {
+            "assemblyVersion": "4.0.4.0",
+            "fileVersion": "4.700.19.46214"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netstandard2.0/System.Net.Http.WinHttpHandler.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.4.0",
+            "fileVersion": "4.700.19.46214"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Net.Http.WinHttpHandler.dll": {}
+        }
+      },
+      "System.Security.Cryptography.Cng/4.6.0": {},
       "Microsoft.AspNetCore.Antiforgery/3.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Antiforgery.dll": {}
@@ -360,9 +410,9 @@
         },
         "compileOnly": true
       },
-      "Microsoft.AspNetCore.Components.Browser/3.0.0.0": {
+      "Microsoft.AspNetCore.Components.Authorization/3.0.0.0": {
         "compile": {
-          "Microsoft.AspNetCore.Components.Browser.dll": {}
+          "Microsoft.AspNetCore.Components.Authorization.dll": {}
         },
         "compileOnly": true
       },
@@ -372,9 +422,21 @@
         },
         "compileOnly": true
       },
+      "Microsoft.AspNetCore.Components.Forms/3.0.0.0": {
+        "compile": {
+          "Microsoft.AspNetCore.Components.Forms.dll": {}
+        },
+        "compileOnly": true
+      },
       "Microsoft.AspNetCore.Components.Server/3.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Components.Server.dll": {}
+        },
+        "compileOnly": true
+      },
+      "Microsoft.AspNetCore.Components.Web/3.0.0.0": {
+        "compile": {
+          "Microsoft.AspNetCore.Components.Web.dll": {}
         },
         "compileOnly": true
       },
@@ -561,12 +623,6 @@
       "Microsoft.AspNetCore.Mvc.ApiExplorer/3.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Mvc.ApiExplorer.dll": {}
-        },
-        "compileOnly": true
-      },
-      "Microsoft.AspNetCore.Mvc.Components.Prerendering/3.0.0.0": {
-        "compile": {
-          "Microsoft.AspNetCore.Mvc.Components.Prerendering.dll": {}
         },
         "compileOnly": true
       },
@@ -1122,7 +1178,7 @@
         },
         "compileOnly": true
       },
-      "System.ComponentModel.Annotations/4.2.0.0": {
+      "System.ComponentModel.Annotations/4.3.0.0": {
         "compile": {
           "System.ComponentModel.Annotations.dll": {}
         },
@@ -1722,7 +1778,7 @@
         },
         "compileOnly": true
       },
-      "System.Security.Cryptography.Cng/4.3.2.0": {
+      "System.Security.Cryptography.Cng.Reference/4.3.2.0": {
         "compile": {
           "System.Security.Cryptography.Cng.dll": {}
         },
@@ -1932,6 +1988,12 @@
         },
         "compileOnly": true
       },
+      "System.Windows.Extensions/4.0.0.0": {
+        "compile": {
+          "System.Windows.Extensions.dll": {}
+        },
+        "compileOnly": true
+      },
       "System.Xml/4.0.0.0": {
         "compile": {
           "System.Xml.dll": {}
@@ -2000,6 +2062,34 @@
       "serviceable": false,
       "sha512": ""
     },
+    "CorePush/2.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-fjbk50mJRbkZTujvilFDlbWgiQoPRDiKh0wCIcj7aW4GHeRMyTKMfsiWm8OWjMN5Zi/KvB7YoLDZkDsIMlyltA==",
+      "path": "corepush/2.0.1",
+      "hashPath": "corepush.2.0.1.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rTK0s2EKlfHsQsH6Yx2smvcTCeyoDNgCW7FEYyV01drPlh2T243PR2DiDXqtC5N4GDm4Ma/lkxfW5a/4793vbA==",
+      "path": "newtonsoft.json/12.0.2",
+      "hashPath": "newtonsoft.json.12.0.2.nupkg.sha512"
+    },
+    "System.Net.Http.WinHttpHandler/4.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VSPMaiVAethqkRZNUiVeqHI+ZZmsQYJYHkTYkav2VCXp6UOQB/uMetUL9zcW8o5dqjy/b/2E7vlOW9MPG31/Fw==",
+      "path": "system.net.http.winhttphandler/4.6.0",
+      "hashPath": "system.net.http.winhttphandler.4.6.0.nupkg.sha512"
+    },
+    "System.Security.Cryptography.Cng/4.6.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aa7yPkf0Xnto7ABWc6jj/aC5wopVYDqHLxZKuUban63gNJeiA2Zml+H6CFvaXerCHoo6xWn2CK9dfnzGyZ/XRQ==",
+      "path": "system.security.cryptography.cng/4.6.0",
+      "hashPath": "system.security.cryptography.cng.4.6.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Antiforgery/3.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
@@ -2040,7 +2130,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.AspNetCore.Components.Browser/3.0.0.0": {
+    "Microsoft.AspNetCore.Components.Authorization/3.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -2050,7 +2140,17 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Microsoft.AspNetCore.Components.Forms/3.0.0.0": {
+      "type": "referenceassembly",
+      "serviceable": false,
+      "sha512": ""
+    },
     "Microsoft.AspNetCore.Components.Server/3.0.0.0": {
+      "type": "referenceassembly",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.AspNetCore.Components.Web/3.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -2206,11 +2306,6 @@
       "sha512": ""
     },
     "Microsoft.AspNetCore.Mvc.ApiExplorer/3.0.0.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Microsoft.AspNetCore.Mvc.Components.Prerendering/3.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -2675,7 +2770,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "System.ComponentModel.Annotations/4.2.0.0": {
+    "System.ComponentModel.Annotations/4.3.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -3175,7 +3270,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "System.Security.Cryptography.Cng/4.3.2.0": {
+    "System.Security.Cryptography.Cng.Reference/4.3.2.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -3346,6 +3441,11 @@
       "sha512": ""
     },
     "System.Windows/4.0.0.0": {
+      "type": "referenceassembly",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "System.Windows.Extensions/4.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

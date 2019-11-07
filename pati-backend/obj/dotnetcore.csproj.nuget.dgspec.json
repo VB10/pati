@@ -1,29 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "/Users/vb/Desktop/dotnetcore/dotnetcore.csproj": {}
+    "/Users/a02484320/Desktop/techsquare/pati/pati-backend/dotnetcore.csproj": {}
   },
   "projects": {
-    "/Users/vb/Desktop/dotnetcore/dotnetcore.csproj": {
+    "/Users/a02484320/Desktop/techsquare/pati/pati-backend/dotnetcore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/vb/Desktop/dotnetcore/dotnetcore.csproj",
+        "projectUniqueName": "/Users/a02484320/Desktop/techsquare/pati/pati-backend/dotnetcore.csproj",
         "projectName": "dotnetcore",
-        "projectPath": "/Users/vb/Desktop/dotnetcore/dotnetcore.csproj",
-        "packagesPath": "/Users/vb/.nuget/packages/",
-        "outputPath": "/Users/vb/Desktop/dotnetcore/obj/",
+        "projectPath": "/Users/a02484320/Desktop/techsquare/pati/pati-backend/dotnetcore.csproj",
+        "packagesPath": "/Users/a02484320/.nuget/packages/",
+        "outputPath": "/Users/a02484320/Desktop/techsquare/pati/pati-backend/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/Users/vb/.nuget/NuGet/NuGet.Config"
+          "/Users/a02484320/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
-          "/Users/vb/.dotnet/NuGetFallbackFolder": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -62,7 +61,8 @@
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
-          }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }
