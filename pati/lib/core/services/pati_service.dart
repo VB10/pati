@@ -5,10 +5,10 @@ class PatiService {
   PatiService._init();
   static PatiService instance = _instance;
 
-  String baseUrl = "";
+  String _baseUrl = "https://127.0.0.1:5001";
 
-  Future<void> getPatiService() async {
-    final response = await http.get(baseUrl);  
+  Future<dynamic> getPatiService() async {
+    final response = await http.get("$_baseUrl/pet");  
     return response.body;
   }
 }

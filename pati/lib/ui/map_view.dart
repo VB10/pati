@@ -1,7 +1,11 @@
 import 'dart:async';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:pati/core/model/pati.dart';
+import 'package:pati/core/services/notification_serivce.dart';
+import 'package:pati/core/services/pati_service.dart';
 
 class MapView extends StatefulWidget {
   @override
@@ -14,6 +18,29 @@ class _MapViewState extends State<MapView> {
   BitmapDescriptor _markerIcon;
 
   LatLng _kMapCenter = LatLng(40.875257, 29.1);
+
+  void onDataRecived() {
+    showBottomSheet(
+        context: context,
+        builder: (context) => BottomSheet(
+              onClosing: null,
+              builder: (context) => Text("oke"),
+            ));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    NotificationService.instance.callback = onDataRecived;
+    PatiService.instance.getPatiService().then((val) {
+      var pati = Pati.fromJson(val);
+      _kMapCenter = LatLng(pati.latitute, pati.longtitute);
+      setState(() {
+        _createMarker();
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     _createMarkerImageFromAsset(context);
@@ -36,22 +63,14 @@ class _MapViewState extends State<MapView> {
   }
 
   Set<Marker> _createMarker() {
-    // TODO(iskakaushik): Remove this when collection literals makes it to stable.
-    // https://github.com/flutter/flutter/issues/28312
-    // ignore: prefer_collection_literals
     return <Marker>[
       Marker(
         markerId: MarkerId("marker_1"),
-        infoWindow: InfoWindow(
-          title: "Adalar Mama Kabi",
-          snippet: "Doluluk orani %15"
-        ),
+        infoWindow:
+            InfoWindow(title: "Adalar Mama Kabi", snippet: "Doluluk orani %15"),
         position: _kMapCenter,
         icon: _markerIcon,
-        onTap: (){
-
-        },
-
+        onTap: () {},
       ),
     ].toSet();
   }

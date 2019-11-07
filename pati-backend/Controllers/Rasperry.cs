@@ -9,6 +9,14 @@ namespace pati_backend.Controllers
 	public class Rasperry
 	{
 		const String rasperyUrl = "http://192.168.0.100:8085/";
+
+		private static int maxWeight = 1000;
+		public static float getFinalWeight(float currentWeight)
+		{
+			var result = maxWeight - currentWeight;
+			if (result < 20) return 0;
+			return result;
+		}
 		public async Task<PetInfo> getAnimalaDataAsync()
 		{
 			var request = new HttpRequestMessage(HttpMethod.Get, rasperyUrl);

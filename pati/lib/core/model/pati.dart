@@ -1,14 +1,16 @@
 class Pati {
   double latitute;
-  int longtitute;
+  double longtitute;
   double weight;
+  double percent;
 
-  Pati({this.latitute, this.longtitute, this.weight});
+  Pati({this.latitute, this.longtitute, this.weight,this.percent});
 
   Pati.fromJson(Map<String, dynamic> json) {
     latitute = json['latitute'];
     longtitute = json['longtitute'];
     weight = json['weight'];
+    percent = json['percent'];
   }
 
   Map<String, dynamic> toJson() {
@@ -16,6 +18,7 @@ class Pati {
     data['latitute'] = this.latitute;
     data['longtitute'] = this.longtitute;
     data['weight'] = this.weight;
+    data['percent'] = this.percent;
     return data;
   }
 }
