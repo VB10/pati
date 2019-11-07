@@ -8,7 +8,7 @@ namespace pati_backend.Controllers
 {
 	public class Rasperry
 	{
-		const String rasperyUrl = "http://192.168.0.100:8080/";
+		const String rasperyUrl = "http://192.168.0.100:8085/";
 		public async Task<PetInfo> getAnimalaDataAsync()
 		{
 			var request = new HttpRequestMessage(HttpMethod.Get, rasperyUrl);
