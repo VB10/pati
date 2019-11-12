@@ -9,3 +9,12 @@
 /Users/a02484320/Desktop/techsquare/pati/console/bin/Debug/netcoreapp3.0/console.pdb
 /Users/a02484320/Desktop/techsquare/pati/console/obj/Debug/netcoreapp3.0/console.dll
 /Users/a02484320/Desktop/techsquare/pati/console/obj/Debug/netcoreapp3.0/console.pdb
+/Users/a02484320/Desktop/techsquare/pati/console/bin/Debug/netcoreapp3.0/Flurl.dll
+/Users/a02484320/Desktop/techsquare/pati/console/bin/Debug/netcoreapp3.0/Flurl.Http.dll
+/Users/a02484320/Desktop/techsquare/pati/console/bin/Debug/netcoreapp3.0/Mapster.dll
+/Users/a02484320/Desktop/techsquare/pati/console/bin/Debug/netcoreapp3.0/MQTTnet.dll
+/Users/a02484320/Desktop/techsquare/pati/console/bin/Debug/netcoreapp3.0/MQTTnet.Extensions.ManagedClient.dll
+/Users/a02484320/Desktop/techsquare/pati/console/bin/Debug/netcoreapp3.0/Newtonsoft.Json.dll
+/Users/a02484320/Desktop/techsquare/pati/console/bin/Debug/netcoreapp3.0/Platform360.Devices.SDK.dll
+/Users/a02484320/Desktop/techsquare/pati/console/bin/Debug/netcoreapp3.0/Polly.dll
+/Users/a02484320/Desktop/techsquare/pati/console/obj/Debug/netcoreapp3.0/console.csproj.CopyComplete

@@ -1,0 +1,10 @@
+/Users/a02484320/Desktop/techsquare/pati/console/bin/Debug/netcoreapp2.1/console.deps.json
+/Users/a02484320/Desktop/techsquare/pati/console/bin/Debug/netcoreapp2.1/console.runtimeconfig.json
+/Users/a02484320/Desktop/techsquare/pati/console/bin/Debug/netcoreapp2.1/console.runtimeconfig.dev.json
+/Users/a02484320/Desktop/techsquare/pati/console/bin/Debug/netcoreapp2.1/console.dll
+/Users/a02484320/Desktop/techsquare/pati/console/bin/Debug/netcoreapp2.1/console.pdb
+/Users/a02484320/Desktop/techsquare/pati/console/obj/Debug/netcoreapp2.1/console.csprojAssemblyReference.cache
+/Users/a02484320/Desktop/techsquare/pati/console/obj/Debug/netcoreapp2.1/console.AssemblyInfoInputs.cache
+/Users/a02484320/Desktop/techsquare/pati/console/obj/Debug/netcoreapp2.1/console.AssemblyInfo.cs
+/Users/a02484320/Desktop/techsquare/pati/console/obj/Debug/netcoreapp2.1/console.dll
+/Users/a02484320/Desktop/techsquare/pati/console/obj/Debug/netcoreapp2.1/console.pdb
