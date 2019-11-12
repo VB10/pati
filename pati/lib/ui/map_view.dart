@@ -16,6 +16,7 @@ class _MapViewState extends State<MapView> {
   Completer<GoogleMapController> _controller = Completer();
 
   BitmapDescriptor _markerIcon;
+  int percent = 0;
 
   LatLng _kMapCenter = LatLng(40.875257, 29.1);
 
@@ -32,9 +33,15 @@ class _MapViewState extends State<MapView> {
   void initState() {
     super.initState();
     NotificationService.instance.callback = onDataRecived;
-    PatiService.instance.getPatiService().then((val) {
+    PatiService.instance.getPatiService().then((val) async {
+      print(val);
       var pati = Pati.fromJson(val);
-      _kMapCenter = LatLng(pati.latitute, pati.longtitute);
+
+      percent = pati.percent.toInt();
+      _kMapCenter = LatLng(pati.latitude, pati.longitude);
+      final GoogleMapController controller = await _controller.future;
+      controller.animateCamera(CameraUpdate.newCameraPosition(
+          CameraPosition(target: _kMapCenter, zoom: 15)));
       setState(() {
         _createMarker();
       });
@@ -43,31 +50,31 @@ class _MapViewState extends State<MapView> {
 
   @override
   Widget build(BuildContext context) {
-    _createMarkerImageFromAsset(context);
-
     return Scaffold(
       body: GoogleMap(
-        markers: _createMarker(),
-        mapType: MapType.normal,
-        initialCameraPosition: CameraPosition(target: _kMapCenter, zoom: 10),
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: null,
-        label: Text('To the lake!'),
-        icon: Icon(Icons.directions_boat),
-      ),
+          markers: _createMarker(),
+          mapType: MapType.normal,
+          initialCameraPosition: CameraPosition(target: _kMapCenter, zoom: 15),
+          onMapCreated: (GoogleMapController controller) {
+            _controller.complete(controller);
+            _createMarkerImageFromAsset(context);
+          }),
+      floatingActionButton: _fabButton,
     );
   }
+
+  Widget get _fabButton => FloatingActionButton.extended(
+        onPressed: null,
+        label: Text('Mama yardiminda bulun'),
+        icon: Icon(Icons.pets),
+      );
 
   Set<Marker> _createMarker() {
     return <Marker>[
       Marker(
         markerId: MarkerId("marker_1"),
-        infoWindow:
-            InfoWindow(title: "Adalar Mama Kabi", snippet: "Doluluk orani %15"),
+        infoWindow: InfoWindow(
+            title: "Adalar Mama Kabi", snippet: "Doluluk orani $percent"),
         position: _kMapCenter,
         icon: _markerIcon,
         onTap: () {},

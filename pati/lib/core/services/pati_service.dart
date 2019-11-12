@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 
 class PatiService {
@@ -5,10 +7,10 @@ class PatiService {
   PatiService._init();
   static PatiService instance = _instance;
 
-  String _baseUrl = "https://127.0.0.1:5001";
+  String _baseUrl = "http://localhost:5002";
 
   Future<dynamic> getPatiService() async {
     final response = await http.get("$_baseUrl/pet");  
-    return response.body;
+    return json.decode(response.body);
   }
 }
