@@ -26,6 +26,7 @@ dependencies:
   google_maps_flutter: 0.5.21+8
   firebase_messaging: 5.1.6
   http: 0.12.0+2
+  flare_flutter: 1.7.1
   
 
 
@@ -57,6 +58,7 @@ flutter:
   assets:
    - assets/images/dogWhite.png
    - assets/images/container.png
+   - assets/Teddy.flr
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

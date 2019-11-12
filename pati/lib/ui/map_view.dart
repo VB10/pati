@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:pati/core/model/pati.dart';
@@ -15,6 +15,7 @@ class MapView extends StatefulWidget {
 class _MapViewState extends State<MapView> {
   Completer<GoogleMapController> _controller = Completer();
 
+  bool isRadio = false;
   BitmapDescriptor _markerIcon;
   int percent = 0;
 
@@ -50,6 +51,8 @@ class _MapViewState extends State<MapView> {
 
   @override
   Widget build(BuildContext context) {
+    print(MaterialLocalizations.of(context));
+
     return Scaffold(
       body: GoogleMap(
           markers: _createMarker(),
@@ -64,9 +67,110 @@ class _MapViewState extends State<MapView> {
   }
 
   Widget get _fabButton => FloatingActionButton.extended(
-        onPressed: null,
+        onPressed: onPressed,
         label: Text('Mama yardiminda bulun'),
         icon: Icon(Icons.pets),
+      );
+
+  void onPressed() {
+    showModalBottomSheet(
+        context: context,
+        backgroundColor: Colors.transparent,
+        builder: (context) => BottomSheet(
+              enableDrag: true,
+              clipBehavior: Clip.hardEdge,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25)),
+              onClosing: () {
+                setState(() {});
+              },
+              builder: (context) {
+                return Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    _mamaHeader,
+                    spaceHelper,
+                    _sendMamaLabel,
+                    _petshops
+                  ],
+                );
+              },
+            ));
+  }
+
+  Widget get spaceHelper => SizedBox(height: 20);
+
+  Widget get _petshops => Expanded(
+        child: ListView.separated(
+          separatorBuilder: (context, index) => Divider(thickness: 2),
+          itemBuilder: (context, index) => listCard(index),
+          itemCount: 3,
+        ),
+      );
+
+  Widget listCard(int index) => Card(
+        child: ListTile(
+          onTap: showPetshopDialog,
+          leading: Text(
+            "Unalan",
+            style: TextStyle(fontWeight: FontWeight.w300),
+            textAlign: TextAlign.center,
+          ),
+          title: Text("Camlica Petshop"),
+          trailing: FlatButton.icon(
+            icon: Icon(
+              Icons.attach_money,
+              color: Colors.green,
+            ),
+            label: Text("${index * 25}"),
+            onPressed: () {},
+          ),
+        ),
+      );
+
+  void showPetshopDialog() {
+    showDialog(
+        context: context,
+        builder: (context) => Dialog(
+              child: Card(
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  runAlignment: WrapAlignment.center,
+                  children: <Widget>[
+                    Icon(Icons.assignment_turned_in, size: 35),
+                    Text(
+                        "İşleminiz tamamlandı. En kısa sürede yerine ulaştırılacak")
+                  ],
+                ),
+              ),
+            ));
+  }
+
+  Widget get _mamaHeader => Expanded(
+        child: FlareActor(
+          "assets/Teddy.flr",
+          alignment: Alignment.center,
+          fit: BoxFit.cover,
+          animation: "idle",
+        ),
+      );
+
+  Widget get _sendMamaLabel => Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "Haydi mama gönderelim",
+                style: Theme.of(context).textTheme.headline,
+              ),
+              Icon(
+                Icons.check_circle,
+                color: Colors.green,
+              )
+            ],
+          )
+        ],
       );
 
   Set<Marker> _createMarker() {
@@ -74,7 +178,7 @@ class _MapViewState extends State<MapView> {
       Marker(
         markerId: MarkerId("marker_1"),
         infoWindow: InfoWindow(
-            title: "Adalar Mama Kabi", snippet: "Doluluk orani $percent"),
+            title: "Unalan Mama Kabi", snippet: "Doluluk orani $percent"),
         position: _kMapCenter,
         icon: _markerIcon,
         onTap: () {},
