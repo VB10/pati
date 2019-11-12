@@ -13,6 +13,7 @@ namespace dotnetcore.Controllers
 	{
 		NotificationService notificationService = new NotificationService();
 		Rasperry rasperryService = new Rasperry();
+		static bool isNotificationOkey = false;
 
 		[HttpGet]
 		public async Task<ActionResult> GetAsync()
@@ -21,10 +22,16 @@ namespace dotnetcore.Controllers
 			if (data != null)
 			{
 				data.Percent = Rasperry.getFinalWeight(data.Weight);
-				if (data.Percent < 20)
+				if (data.Percent < 20 && !isNotificationOkey)
 				{
+					isNotificationOkey = true;
 					string[] devices = { "fwPpnEkX-eM:APA91bGW36ASISUZ9FBaRMWKkvWZs0tNJGlDoiEvafMaDIDDO5_LmYuF1kJ00bnVlpAi4nmv86yrXS2B19uW5q8zutnjfUe1THzaXUjp58pY1T3d_2RMwFhtRGPXzHtNHUjkBCO1JPh7" };
 					await notificationService.postNotifiactionAsync("Tekir", "Mamam azaldi. Biraz mama getirebilir misin?", data, devices);
+				}
+				else
+				{
+					if (data.Percent > 20) isNotificationOkey = false;
+
 				}
 				return Ok(data);
 			}

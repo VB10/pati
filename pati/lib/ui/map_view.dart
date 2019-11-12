@@ -80,7 +80,8 @@ class _MapViewState extends State<MapView> {
               enableDrag: true,
               clipBehavior: Clip.hardEdge,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(25)),
+                  borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(25), bottom: Radius.circular(25))),
               onClosing: () {
                 setState(() {});
               },

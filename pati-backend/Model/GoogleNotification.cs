@@ -1,7 +1,6 @@
 
 namespace dotnetcore.Model
 {
-
 	public class GoogleNotification
 	{
 		public string[] registration_ids { get; set; }

@@ -26,6 +26,11 @@ namespace dotnetcore
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllers();
+
+			services.AddHttpsRedirection(options =>
+    {
+	    options.HttpsPort = 5001;
+    });
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,10 +41,7 @@ namespace dotnetcore
 				app.UseDeveloperExceptionPage();
 			}
 
-			// app.UseHttpsRedirection();
-
 			app.UseRouting();
-
 			// app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
