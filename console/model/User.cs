@@ -16,8 +16,8 @@ namespace console.model
 			user.MQTTuserName = "sem5VK";
 			user.MQTTpassword = "EOUH2#bW";
 			user.CSEid = "/sem-cux_bac8066f-dfd1-49cd-bee4-147e5e0dd267";
-			user.clientid = "CAE590914ba-2358-4634-b500-58232fbc4d39";
-			user.MQTTport = 1445;
+			user.clientid = "CAE20ebb267-ab8c-402f-a859-65a55152c8fa";
+			user.MQTTport = 1883;
 			user.timeout = 30;
 			user.MQTTpointOfAcsesss = "mqtt.kocdigital.com";
 			return user;

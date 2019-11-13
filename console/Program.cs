@@ -20,12 +20,10 @@ namespace console
 		async static Task Main(string[] args)
 		{
 			user = User.initUser();
-
 			await platform360InitAsync("veli");
 			startTimer();
 			Console.WriteLine("Press the Enter key to exit anytime... ");
 			Console.ReadLine();
-
 		}
 		public async static Task platform360InitAsync(String data)
 		{
