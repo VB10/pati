@@ -23,9 +23,9 @@ namespace console
 			user.MQTTuserName = "sem5VK";
 			user.MQTTpassword = "EOUH2#bW";
 			user.CSEid = "/sem-cux_bac8066f-dfd1-49cd-bee4-147e5e0dd267";
-			user.clientid = "CAE11ed5b95-5fe3-4f16-921f-ad8a4b837ac9";
-			user.MQTTport = 1883;
-			user.timeout = 120;
+			user.clientid = "CAE590914ba-2358-4634-b500-58232fbc4d39";
+			user.MQTTport = 1445;
+			user.timeout = 30;
 			user.MQTTpointOfAcsesss = "mqtt.kocdigital.com";
 
 			await platform360InitAsync("veli");
@@ -41,27 +41,19 @@ namespace console
 				   .WithClientId(user.clientid)
 				.WithCSEId(user.CSEid)
 				.WithMqttOptions(user.MQTTpointOfAcsesss, user.MQTTport, user.timeout, user.MQTTuserName, user.MQTTpassword).Build();
-
-			IEnrollmentServiceFactory _enrollmentServiceFactory = new EnrollmentServiceFactory();
-			IDeviceManagementServiceFactory _deviceManagementServiceFactory = new DeviceManagementServiceFactory();
 			IDeviceServiceFactory _deviceServiceFactory = new DeviceServiceFactory();
+			var _deviceService = _deviceServiceFactory.CreateDeviceService(deviceMqttClientOptions);
+			await _deviceService.ConnectToPlatformAsync();
+			var sensor = _deviceService.GetSensors();
 
-			var enrollmentService = _enrollmentServiceFactory.CreateEnrollmentService(deviceMqttClientOptions);
-			var deviceManagementService = _deviceManagementServiceFactory.CreateDeviceManagementService(deviceMqttClientOptions);
-			var deviceService = _deviceServiceFactory.CreateDeviceService(deviceMqttClientOptions);
+			var existedSensors = deviceService.GetSensors();
+			// Notification event when any sensor value change request is sent.
 
-			await enrollmentService.EnrollDeviceAsync("VB Devices");
-			await deviceService.ConnectToPlatformAsync();
-			await deviceManagementService.ConnectToPlatformAsync();
-			// Sensor Creation
-			// Parameters: Sensor Name and isBidirectional
-			var sensor = await deviceService.CreateSensorAsync("TestSensor", false);
-			System.Console.WriteLine("VB SENSOR : " + sensor);
-
-			deviceService.UseSensorValueChangeRequestHandler(e =>
+			if (existedSensors.Count > 0)
 			{
-				System.Console.WriteLine(e.SensorId);
-			});
+				// It sends the request to platform to save sensor data.
+				await deviceService.PushSensorDataToPlatformAsync(existedSensors[0].Id, data, "on", "off", DateTime.Now);
+			}
 
 		}
 
@@ -95,8 +87,7 @@ namespace console
 				if (data != null)
 				{
 					Console.WriteLine(data);
-
-
+					await platform360InitAsync(data);
 				}
 			}
 		}

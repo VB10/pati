@@ -21,7 +21,7 @@ namespace pati_backend.Controllers
 		}
 		public async Task<PetInfo> getAnimalaDataAsync()
 		{
-			var request = new HttpRequestMessage(HttpMethod.Get, firebaseUrl);
+			var request = new HttpRequestMessage(HttpMethod.Get, rasperyUrl);
 			using (var client = new HttpClient())
 			{
 				HttpResponseMessage result;
