@@ -12,10 +12,12 @@ namespace pati_backend.Controllers
 
 		const String firebaseUrl = "https://reacttest-d7f4d.firebaseio.com/pets/0.json";
 
-		private static int maxWeight = 1000;
-		public static float getFinalWeight(float currentWeight)
+		private static int maxWeight = 1200;
+		public static int getFinalWeight(float currentWeight)
 		{
-			return (100 * currentWeight)/maxWeight;
+			if (currentWeight < 0) return 0;
+			else
+				return (int)((100 * currentWeight) / maxWeight);
 		}
 		public async Task<PetInfo> getAnimalaDataAsync()
 		{

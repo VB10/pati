@@ -26,7 +26,7 @@ namespace dotnetcore
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllers();
-
+				
 			services.AddHttpsRedirection(options =>
     {
 	    options.HttpsPort = 5001;

@@ -7,7 +7,7 @@ class PatiService {
   PatiService._init();
   static PatiService instance = _instance;
 
-  String _baseUrl = "http://localhost:5002";
+  String _baseUrl = "http://192.168.0.103:5102";
 
   Future<dynamic> getPatiService() async {
     final response = await http.get("$_baseUrl/pet");  

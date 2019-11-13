@@ -22,6 +22,7 @@ namespace dotnetcore.Controllers
 			if (data != null)
 			{
 				data.Percent = Rasperry.getFinalWeight(data.Weight);
+		
 				if (data.Percent < 20 && !isNotificationOkey)
 				{
 					isNotificationOkey = true;
